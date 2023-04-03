@@ -35,7 +35,7 @@
     const resultElement = document.getElementById("result");
     const resultLink = document.getElementById("authURL");
     // Replace this with your own endpoint
-    const getAuthURL = "https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly&response_type=code&client_id=748195119647-hr3okccvaiia0k4eirv4vequg6he3bie.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fjasonduro.github.io%2Fmeet%2F";
+    const getAuthURL = "https://gjnt3f62r5.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url";
 
     getCodeElement.onclick = function () {
       fetch(getAuthURL)
