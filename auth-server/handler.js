@@ -1,9 +1,16 @@
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 const calendar = google.calendar("v3");
-
+/**
+ * SCOPES allows you to set access levels; this is set to read only for now because you don't have access rights to
+ * update the calendar yourself. For more info, check out the SCOPES documentation at this link: https://developers.google.com/identity/protocols/oauth2/scopes
+ */
 const SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 
+/**
+ * Credentials are values required to get access to your calendar. If you see “process.env” this means
+ * the value is in the “config.json” file. This is a best practice as it keeps your API secrets hidden. Please remember to add “config.json” to your “.gitignore” file.
+ */
 const credentials = {
   client_id: process.env.CLIENT_ID,
   project_id: process.env.PROJECT_ID,
@@ -12,7 +19,7 @@ const credentials = {
   auth_uri: "https://accounts.google.com/o/oauth2/auth",
   token_uri: "https://oauth2.googleapis.com/token",
   auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
-  redirect_uris: ["https://jasonduro.github.io/meet"],
+  redirect_uris: ["https://jasonduro.github.io/meet/"],
   javascript_origins: ["https://jasonduro.github.io", "http://localhost:3000"],
 };
 const { client_secret, client_id, redirect_uris, calendar_id } = credentials;
@@ -22,6 +29,13 @@ const oAuth2Client = new google.auth.OAuth2(
   redirect_uris[0]
 );
 
+/**
+ *
+ * The first step in the OAuth process is to generate a URL so users can log in with
+ * Google and be authorized to see your calendar events data. After logging in, they’ll receive a code
+ * as a URL parameter.
+ *
+ */
 module.exports.getAuthURL = async () => {
   /**
    *
