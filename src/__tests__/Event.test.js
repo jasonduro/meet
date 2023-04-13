@@ -3,23 +3,24 @@ import { shallow } from 'enzyme';
 import Event from '../Event';
 import { mockData } from '../mock-data';
 
-describe('<Event /> component', () => {
-  let EventWrapper; 
-  const event = mockData[0];
-  beforeAll(() => {
-    EventWrapper = shallow(<Event event={event} />);
-  })
-
-  // test to render an event component
-  test('renders event component', () => {
-    expect(EventWrapper).toBeDefined();
+describe('Show/Hide Event Details', () => {
+  test('An event element is collapsed by default', () => {
+    const EventWrapper = shallow(<Event event={mockData[0]} />);
+    expect(EventWrapper.find('.eventDetails')).toHaveLength(0);
   });
 
-  // test to render event title as a h1 element
-  test('renders event title as a h1 element', () => {
-    const summary = EventWrapper.find('h1.summary');
-    expect(summary).toHaveLength(1);
-    expect(summary.text()).toBe(event.summary);
+  test('User can expand an event to see its details', () => {
+    const EventWrapper = shallow(<Event event={mockData[0]} />);
+    EventWrapper.find('.detailsButton').simulate('click');
+    expect(EventWrapper.find('.eventDetails')).toHaveLength(1);
   });
 
+  test('User can collapse an event to hide its details', () => {
+    const EventWrapper = shallow(<Event event={mockData[0]} />);
+    EventWrapper.find('.detailsButton').simulate('click');
+    expect(EventWrapper.find('.eventDetails')).toHaveLength(1);
+    EventWrapper.find('.detailsButton').simulate('click');
+    expect(EventWrapper.find('.eventDetails')).toHaveLength(0);
+  });
 });
+

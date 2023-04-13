@@ -1,20 +1,34 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Event extends Component {
+  state = {
+    showDetails: false
+  };
+
+  handleDetailsClick = () => {
+    this.setState(prevState => ({
+      showDetails: !prevState.showDetails
+    }));
+  };
+
   render() {
     const { event } = this.props;
-    return <div className="Event">
-        <h1 className="Summary">{event.summary}</h1>
-        <p>Event Date</p>
-        <p>Event Time</p>
-        <p>@ + Event Title</p>
-        <p>Event Location</p>
-        <button>show details</button>
-        <h3>About event:</h3>
-        <link>See details on Google Calendar</link>
-        <p>Event Description</p>
-        <button>hide details</button>
-    </div>;
+    const { showDetails } = this.state;
+
+    return (
+      <div className="event">
+        <h1 className="summary">{event.summary}</h1>
+        {showDetails && (
+          <div className="eventDetails">
+            <p>{event.description}</p>
+          </div>
+        )}
+        <button className="detailsButton" onClick={this.handleDetailsClick}>
+          {showDetails ? 'Hide Details' : 'Show Details'}
+        </button>
+      </div>
+    );
   }
 }
+
 export default Event;
