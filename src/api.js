@@ -1,5 +1,5 @@
+import axios from 'axios';
 import { mockData } from "./mock-data";
-import axios from "axios";
 import NProgress from "nprogress";
 
 export const extractLocations = (events) => {
@@ -18,7 +18,7 @@ export const getAccessToken = async () => {
   const code = await searchParams.get("code");
   if (!code) {
     const results = await axios.get(
-      "https://gjnt3f62r5.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
+      "https://xwsra3qmvyijxhguymkzrkn5cy0pmeio.lambda-url.eu-central-1.on.aws/"
       );
       const { authUrl } = results.data;
       return (window.location.href = authUrl);
