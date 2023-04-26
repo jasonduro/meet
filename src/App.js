@@ -38,16 +38,18 @@ class App extends Component {
     this.mounted = false;
   }
 
-  updateNumberOfResults = (numberOfResults) => {
-    this.setState({ numberOfResults });
-    this.updateEvents(this.state.selectedLocation, numberOfResults);
+  updateNumberOfResults = async (eventCount) => {
+    this.setState({ numberOfResults: eventCount });
+    const events = await getEvents();
+    const displayedEvents = events.slice(0, eventCount);
+    this.setState({ events: displayedEvents });
   };
 
   render() {
     return (
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        <NumberOfEvents updateNumberOfResults={this.updateNumberOfResults} />
+        <NumberOfEvents numberOfResults={this.state.numberOfResults} updateNumberOfResults={this.updateNumberOfResults} />
         <EventList events={this.state.events} />
       </div>
     );

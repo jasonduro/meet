@@ -15,6 +15,7 @@ describe('<App /> integration', () => {
     expect(AppWrapper.find(EventList).props().events).toEqual(AppEventsState);
     AppWrapper.unmount();
   });
+  
   test('App passes "locations" state as a prop to CitySearch', () => {
     const AppWrapper = mount(<App />);
     const AppLocationsState = AppWrapper.state('locations');
@@ -22,6 +23,7 @@ describe('<App /> integration', () => {
     expect(AppWrapper.find(CitySearch).props().locations).toEqual(AppLocationsState);
     AppWrapper.unmount();
   });
+  
   test('get list of events matching the city selected by the user', async () => {
     const AppWrapper = mount(<App />);
     const CitySearchWrapper = AppWrapper.find(CitySearch);
@@ -36,6 +38,7 @@ describe('<App /> integration', () => {
     expect(AppWrapper.state('events')).toEqual(eventsToShow);
     AppWrapper.unmount();
   });
+  
   test('get list of all events when user selects "See all cities"', async () => {
     const AppWrapper = mount(<App />);
     const suggestionItems = AppWrapper.find(CitySearch).find('.suggestions li');
@@ -44,6 +47,32 @@ describe('<App /> integration', () => {
     expect(AppWrapper.state('events')).toEqual(allEvents);
     AppWrapper.unmount();
   });
+
+  test('App passes "numberOfResults" state as a prop to NumberOfEvents', () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    expect(NumberOfEventsWrapper.prop('numberOfResults')).toEqual(AppWrapper.state('numberOfResults'));
+    AppWrapper.unmount();
+  });
+  
+  test('App updates "numberOfResults" state when the user changes the value in NumberOfEvents', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    await NumberOfEventsWrapper.instance().props.updateNumberOfResults(10);
+    expect(AppWrapper.state('numberOfResults')).toBe(10);
+    AppWrapper.unmount();
+  });
+  
+  test('App displays the correct number of events based on the "numberOfResults" state', async () => {
+    const AppWrapper = mount(<App />);
+    AppWrapper.setState({ numberOfResults: 1 });
+    await AppWrapper.instance().updateNumberOfResults(1);
+    await AppWrapper.update();
+    expect(AppWrapper.find(EventList).props().events.length).toBe(1);
+    AppWrapper.unmount();
+  });
+  
+  
 });
 
 describe('<App /> component', () => {
