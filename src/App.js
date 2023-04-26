@@ -1,7 +1,7 @@
 import './nprogress.css';
 import React, { Component } from 'react';
 import './App.css';
-import logo from './images/300_logo.png'
+import logo from './images/meet_logo_only.png'
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
@@ -51,6 +51,7 @@ class App extends Component {
     return (
       <div className="App">
         <img src={logo} className="App-logo" alt="logo" />
+        <h1>Meet App</h1>
         <h3>Choose a city near you</h3>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <br></br>
