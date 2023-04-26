@@ -26,24 +26,14 @@ p {
 
 input[type="text"],
 input[type="number"] {
-  font-size: 1rem;
-  padding: 8px;
-  border: 1px solid #ccc;
+  padding: 8px 6px 8px 10px;
   border-radius: 4px;
   outline: none;
-  transition: all 0.3s ease;
-}
-
-/* Change the size, color, hover border, etc. */
-input[type="text"]:hover,
-input[type="number"]:hover {
-  border-color: #333;
-}
-
-input[type="text"]:focus,
-input[type="number"]:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border: 1px solid #ccc;
+  font-size: 14px;
+  line-height: 20px;
+  align-self: center;
+  height: 38px;
 }
 
 .city {
@@ -86,26 +76,23 @@ input[type="number"]:focus {
   background-color: #bcdcdb;
 }
 
-.details-btn {
-  font-family: 'Arial', sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
+.event {
+  padding: 10px 10px 35px;
+  margin-bottom: 10px;
+  text-align: left;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 6px 12px;
+  position: relative;
+}
+
+.details-btn {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  outline: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.details-btn:hover {
-  background-color: #0056b3;
-}
-
-.event-details {
-  font-family: 'Arial', sans-serif;
-  font-size: 14px;
 }
 
 .name {
@@ -213,21 +200,14 @@ input[type="number"]:focus {
 
 
 
-/* Mobile styles */
-.event {
-  display: block;
-  width: 100%;
-}
-
-/* Desktop styles */
-@media (min-width: 768px) {
-  .event {
-    display: inline-block;
-    width: 48%;
-    margin-right: 4%;
+@media only screen and (min-width: 992px) {
+  .data-vis-wrapper {
+    flex-direction: row;
   }
-
-  .event:nth-child(2n) {
-    margin-right: 0;
+  .data-vis-wrapper .recharts-responsive-container {
+    flex-basis: 50%;
+    max-width: 50%;
+    min-width: auto;
+    margin: 0 auto;
   }
 }

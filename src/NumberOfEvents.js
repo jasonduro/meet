@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 
 class NumberOfEvents extends Component {
   state = {
-    numberOfEvents: 32,
+    numberOfEvents: this.props.numberOfResults,
   }
 
   handleInputChange = (event) => {
-    const value = event.target.value;
-    this.setState({
-      numberOfEvents: value,
-    });
+    const value = parseInt(event.target.value);
+    this.setState({ numberOfEvents: value });
+    this.props.updateNumberOfResults(value); // Call the updateNumberOfResults function passed from App.js
   }
 
   render() {
