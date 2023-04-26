@@ -70,7 +70,7 @@ const getToken = async (code) => {
   }
 }
 
-export const getEvents = async () => {
+export const getEvents = async (numberOfResults) => {
   NProgress.start();
 
   if (window.location.href.startsWith("http://localhost")) {
