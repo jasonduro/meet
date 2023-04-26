@@ -83,6 +83,7 @@ input[type="number"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
+  background-color: #fff;
 }
 
 .details-btn {
@@ -210,4 +211,16 @@ input[type="number"] {
     min-width: auto;
     margin: 0 auto;
   }
+}
+
+body {
+  background-color: #F0D43A;
+}
+
+.App {
+  color: #3B4A6B;
+}
+
+.App-logo {
+  height: 200px;
 }
