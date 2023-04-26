@@ -1,6 +1,7 @@
 import { mockData } from "./mock-data";
 import NProgress from "nprogress";
 
+
 const axios = require("axios");
 
 export const extractLocations = (events) => {
@@ -82,7 +83,7 @@ export const getEvents = async () => {
   if (token) {
     removeQuery();
     // eslint-disable-next-line 
-    const url = 'https://gjnt3f62r5.execute-api.eu-central-1.amazonaws.com/dev/api/get-events' + '/' + token;
+    const url = `https://gjnt3f62r5.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}?maxResults=${numberOfResults}`;
     const result = await axios.get(url);
     if (result.data) {
       var locations = extractLocations(result.data.events);
