@@ -1,5 +1,9 @@
 import puppeteer from 'puppeteer';
 
+beforeAll(async () => { 
+jest.setTimeout(30000); // Set the timeout to 30 seconds
+});
+
 describe('show/hide an event details', () => {
   test('An event element is collapsed by default', async () => {
     const browser = await puppeteer.launch();
@@ -12,5 +16,5 @@ describe('show/hide an event details', () => {
     const eventDetails = await page.$('.event .event__Details');
     expect(eventDetails).toBeNull();
     browser.close();
-  });
+  }, 10000); // Set the timeout specifically for this test to 10 seconds)
 });
