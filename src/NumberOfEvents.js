@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class NumberOfEvents extends Component {
+  static defaultProps = {
+    numberOfResults: 32,
+  };
+
   state = {
     numberOfEvents: this.props.numberOfResults,
   }
