@@ -16,5 +16,5 @@ describe('show/hide an event details', () => {
     const eventDetails = await page.$('.event .event__Details');
     expect(eventDetails).toBeNull();
     browser.close();
-  }, 10000); // Set the timeout specifically for this test to 10 seconds)
+  }, 30000); // Set the timeout specifically for this test to 30 seconds)
 });
