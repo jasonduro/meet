@@ -20,3 +20,4 @@ describe('<NumberOfEvents /> component', () => {
     expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(32);
   });
 });
+
