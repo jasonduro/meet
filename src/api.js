@@ -89,7 +89,7 @@ export const getEvents = async (numberOfResults) => {
   if (token) {
     removeQuery();
     // eslint-disable-next-line 
-    const url = `https://gjnt3f62r5.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}?maxResults=${numberOfResults}`;
+    const url = `https://gjnt3f62r5.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}?maxResults=${numberOfResults || 32}`;
     const result = await axios.get(url);
     if (result.data) {
       var locations = extractLocations(result.data.events);
