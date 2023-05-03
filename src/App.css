@@ -117,7 +117,7 @@ input[type="number"] {
 }
 
 .numberOfEvents {
-  width: 200px;
+  width: 100px;
   margin: 20px auto;
   text-align: center;
 }
@@ -128,11 +128,6 @@ input[type="number"] {
   grid-gap: 20px;
   padding: 20px;
   font-family: sans-serif;
-}
-
-.Alert {
-  position: fixed;
-  top: 20px;
 }
 
 .data-vis-wrapper {

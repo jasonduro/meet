@@ -58,6 +58,7 @@ class CitySearch extends Component {
           value={this.state.query}
           onChange={this.handleInputChanged}
           onFocus={() => { this.setState({ showSuggestions: true }) }}
+          placeholder="Click here to type in your city"
         />
         <i
           className="fa fa-chevron-down"
