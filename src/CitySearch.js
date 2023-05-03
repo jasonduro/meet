@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InfoAlert } from './Alert';
+import InfoAlert from './InfoAlert';
 
 
 class CitySearch extends Component {
@@ -18,7 +18,7 @@ class CitySearch extends Component {
     if (suggestions.length === 0) {
       this.setState({
         query: value,
-        infoText: 'City not found. Please try another city',
+        infoText: 'The city name you typed is not found. Please try another city',
       });
     } else {
       return this.setState({
@@ -48,8 +48,9 @@ class CitySearch extends Component {
 
   render() {
     return (
+      <>
+      <InfoAlert text={this.state.infoText} />
       <div className="CitySearch">
-        <InfoAlert text={this.state.infoText} />
         <div className="citysearch-input-container">
         <input
           type="text"
@@ -76,6 +77,7 @@ class CitySearch extends Component {
           </li>
         </ul>
       </div>
+      </>
     );
   }
 }
