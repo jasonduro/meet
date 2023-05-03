@@ -40,10 +40,17 @@ class CitySearch extends Component {
     this.props.updateEvents(suggestion);
   }
 
+  toggleSuggestions = () => {
+    this.setState((prevState) => ({
+      showSuggestions: !prevState.showSuggestions,
+    }));
+  };
+
   render() {
     return (
       <div className="CitySearch">
         <InfoAlert text={this.state.infoText} />
+        <div className="citysearch-input-container">
         <input
           type="text"
           className="city"
@@ -51,6 +58,12 @@ class CitySearch extends Component {
           onChange={this.handleInputChanged}
           onFocus={() => { this.setState({ showSuggestions: true }) }}
         />
+        <i
+          className="fa fa-chevron-down"
+          onClick={this.toggleSuggestions}
+          style={{ cursor: 'pointer', marginLeft: '5px' }}
+        />
+        </div>
         <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none'}}>
           {this.state.suggestions.map((suggestions) => (
             <li 

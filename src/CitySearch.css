@@ -1,0 +1,16 @@
+.citysearch-input-container {
+  position: relative;
+  display: inline-block;
+}
+
+.citysearch-input-container .fa-chevron-down {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.city {
+  padding-right: 25px;
+}

@@ -27,16 +27,14 @@ class Alert extends Component {
 class InfoAlert extends Alert {
   constructor(props) {
     super(props);
-    this.color = 'blue';
-    this.backgroundColor = 'lightblue';
+    this.color = '#3322F0';
   }
 }
 
 class ErrorAlert extends Alert {
   constructor(props) {
     super(props);
-    this.color = 'red';
-    this.backgroundColor = 'lightpink';
+    this.color = '#F0402E';
   }
 }
 
