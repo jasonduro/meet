@@ -10,7 +10,10 @@ class NumberOfEvents extends Component {
     numberOfEvents: this.props.numberOfResults,
   }
   handleInputChange = (event) => {
-    const value = parseInt(event.target.value);
+    const value = parseInt(event.target.value, 10);
+    if (isNaN(value)) {
+      return;
+    }
     if (value > 32) {
       this.setState({
         errorText: 'Number should be less than 32',
