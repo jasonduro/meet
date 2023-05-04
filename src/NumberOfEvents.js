@@ -45,8 +45,6 @@ class NumberOfEvents extends Component {
           value={this.state.numberOfResults}
           onChange={this.handleInputChange}
           placeholder="Enter number of events"
-          min="1"
-          max="32"
         />
       <ErrorAlert text={this.state.errorText} />
       </div>
