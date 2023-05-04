@@ -44,7 +44,8 @@ class App extends Component {
       const code = searchParams.get("code");
   this.setState({ showWelcomeScreen: !(code || isTokenValid) });
     if ((code || isTokenValid) && this.mounted) {
-      getEvents().then((events) => {
+      const { numberOfResults } = this.state;
+      getEvents(numberOfResults).then((events) => {
         if (this.mounted) {
     this.setState({ events, locations: extractLocations(events) });
       }
