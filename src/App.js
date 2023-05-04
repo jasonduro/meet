@@ -15,7 +15,13 @@ class App extends Component {
     locations: [], 
     numberOfResults: 32,
     showWelcomeScreen: undefined,
+    currentPage:0,
+    itemsPerPage:32,
   }
+
+  setCurrentPage = (page) => {
+    this.setState({ currentPage: page });
+  };
 
   updateEvents = (location, eventCount) => {
     const { numberOfResults } = this.state;
@@ -57,6 +63,7 @@ class App extends Component {
     this.setState({ events: displayedEvents });
   };
 
+
   render() {
     if (this.state.showWelcomeScreen === undefined) return <div className="App" />
     return (
@@ -67,7 +74,12 @@ class App extends Component {
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <br></br>
         <NumberOfEvents numberOfResults={this.state.numberOfResults} updateNumberOfResults={this.updateNumberOfResults} />
-        <EventList events={this.state.events} />
+        <EventList 
+          events={this.state.events}
+          currentPage={this.state.currentPage}
+          setCurrentPage={(page) => this.setState({ currentPage: page })}
+          itemsPerPage={this.state.itemsPerPage}
+          />
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} getAccessToken={() => {getAccessToken()}} />
       </div>
     );
