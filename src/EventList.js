@@ -5,6 +5,7 @@ import ReactPaginate from './ReactPaginateWrapper';
 class EventList extends Component {
   render() {
     const { events, currentPage, setCurrentPage, itemsPerPage } = this.props;
+    console.log('Items per page:', itemsPerPage);
 
     // Slice the events array to only show the items corresponding to the current page
     const displayedEvents = events.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
