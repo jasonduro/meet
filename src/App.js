@@ -58,11 +58,10 @@ class App extends Component {
 
   updateNumberOfResults = async (eventCount) => {
     this.setState({ numberOfResults: eventCount });
-    const events = await getEvents(eventCount);
-    const displayedEvents = events.slice(0, eventCount);
-    this.setState({ events: displayedEvents });
+    const selectedLocation = document.querySelector('.suggestions li.selected')?.textContent || 'all';
+    this.updateEvents(selectedLocation, eventCount);
   };
-
+  
 
   render() {
     if (this.state.showWelcomeScreen === undefined) return <div className="App" />
