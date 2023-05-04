@@ -24,6 +24,7 @@ class App extends Component {
   };
 
   updateEvents = (location, eventCount) => {
+    console.log("Updating events for location and eventCount:", location, eventCount);
     const { numberOfResults } = this.state;
   
     getEvents(eventCount || numberOfResults).then((events) => {
@@ -47,7 +48,7 @@ class App extends Component {
       const { numberOfResults } = this.state;
       getEvents(numberOfResults).then((events) => {
         if (this.mounted) {
-    this.setState({ events, locations: extractLocations(events) });
+          this.setState({ events, locations: extractLocations(events) });
       }
     });
   }
@@ -58,6 +59,7 @@ class App extends Component {
   }
 
   updateNumberOfResults = async (eventCount) => {
+    console.log("Updating number of results:", eventCount);
     this.setState({ numberOfResults: eventCount });
     const selectedLocation = document.querySelector('.suggestions li.selected')?.textContent || 'all';
     this.updateEvents(selectedLocation, eventCount);
