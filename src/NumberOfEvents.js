@@ -9,6 +9,7 @@ class NumberOfEvents extends Component {
   state = {
     numberOfEvents: this.props.numberOfResults,
   }
+  
   handleInputChange = (event) => {
     const value = parseInt(event.target.value, 10);
     if (isNaN(value)) {
@@ -42,7 +43,7 @@ class NumberOfEvents extends Component {
           type="number"
           className="event-number-input"
           id="event-number-input"
-          value={this.state.numberOfResults}
+          value={this.state.numberOfEvents}
           onChange={this.handleInputChange}
           placeholder="Enter number of events"
         />
